@@ -1,7 +1,7 @@
 #include <WiFiManager.h> // https://github.com/tzapu/WiFiManager
 #include <NTPClient.h>   // https://github.com/arduino-libraries/NTPClient
-#include <WiFiUdp.h>
-#include <ezButton.h>
+#include <WiFiUdp.h> // https://github.com/esp8266/Arduino (Core Arduino Lib for ESP8266)
+#include <ezButton.h> // https://github.com/ArduinoGetStarted/button
 
 // VARS
 //-- WIFI
@@ -218,7 +218,7 @@ void getJsonConfig(void)
 void setup()
 {
   // Txt
-  screenPrintText("Starter op...", 0, 0, 1);
+  screenPrintText("Starting...", 0, 0, 1);
 
   // Buttons
   button.setDebounceTime(50); // set debounce time to 50 milliseconds
@@ -256,7 +256,7 @@ void setup()
   if (!res)
   {
     Serial.println("Failed to connect");
-    screenPrintText("Wifi-fejl...", 0, 0, 1);
+    screenPrintText("Wifi Error...", 0, 0, 1);
     // ESP.restart();
   }
 
@@ -281,15 +281,13 @@ void setup()
     screenPrintText("No WiFi", 0, 0, 1);
     screenPrintText("-Restart", 0, 1, 0);
     screenPrintText("-Change SSID", 0, 2, 0);
-    screenPrintText("-Ping me", 0, 3, 0);
-    screenPrintText("-Try stand up", 0, 4, 0);
     screenPrintText("", 0, 5, 0);
     screenPrintText("Didn't create hotspot", 0, 6, 0);
   }
 }
 
 // Delays
-boolean delay_without_delaying(unsigned long time)
+boolean delayButWithoutDelay(unsigned long time)
 {
   // return false if we're still "delaying", true if time ms has passed.
   // this should look a lot like "blink without delay"
@@ -303,7 +301,7 @@ boolean delay_without_delaying(unsigned long time)
   return false;
 }
 
-boolean delay_without_delaying(unsigned long &since, unsigned long time)
+boolean delayButWithoutDelay(unsigned long &since, unsigned long time)
 {
   // return false if we're still "delaying", true if time ms has passed.
   // this should look a lot like "blink without delay"
@@ -316,8 +314,8 @@ boolean delay_without_delaying(unsigned long &since, unsigned long time)
   return false;
 }
 
-String command;
 
+String command;
 void loop()
 {
   // Read serial
@@ -373,14 +371,14 @@ void loop()
 
   if (wm.getConfigPortalActive())
   {
-    Serial.println("No wifi1....");
-    screenPrintText("No wifi1...", 0, 0, 1);
+    Serial.println("No wifi - Case1....");
+    screenPrintText("No wifi Case1", 0, 0, 1);
   }
 
   if (wm.getWebPortalActive())
   {
-    Serial.println("No wifi2....");
-    screenPrintText("No wifi2...", 0, 0, 1);
+    Serial.println("No wifi - Case2....");
+    screenPrintText("No wifi Case2", 0, 0, 1);
   }
 
   // Button counts
@@ -454,7 +452,7 @@ void loop()
   // Loop, different timeperiods
   static unsigned long buttontime, clocktime;
 
-  if (delay_without_delaying(buttontime, 500))
+  if (delayButWithoutDelay(buttontime, 500))
   {
     // Check if button press has been too long time ago
     unsigned long currentButtonmillis = millis();
@@ -470,7 +468,7 @@ void loop()
     }
   }
   // Every 1000
-  if (delay_without_delaying(clocktime, 1000))
+  if (delayButWithoutDelay(clocktime, 1000))
   {
     // Update time
     timeClient.update();
