@@ -13,7 +13,7 @@ This sketch is created for Platform.io in Visual Studio Code / Code.
 Here's a sketch where I'm using the following functions/features:
 
 - Serial - Both Commands and Print
-- Wifi - Including Wifi Manger, get NTP Time and more
+- Wifi - Including Wifi Manger, get NTP Time and more, and HTTPS (**Insecure!**)
 - Screen
 - Button
 - Loops with timings
