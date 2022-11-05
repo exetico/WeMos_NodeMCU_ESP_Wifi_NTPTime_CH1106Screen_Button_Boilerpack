@@ -20,8 +20,8 @@ char const *__TMP_USER_INPUT_2 = "";
 String __TMP_USER_INPUT_3 = "";
 
 //-- CONFIG
-bool __TMP_FETCHING_CONFIG = false;
-bool __TMP_SCREEN_IS_INITATED = 0;
+bool __FETCHING_CONFIG = false;
+bool __SCREEN_INITATED = 0;
 
 //-- TIME
 int __THIS_TIME = 0;
@@ -62,6 +62,7 @@ WiFiClientSecure client;
 #include <WiFiClientSecureBearSSL.h>
 #include <ArduinoJson.h>
 
+// Define path for source file
 char const *HTTPS_PATH = "/get";
 char const *HTTPS_START = "https://";
 char const *CONFIG_HOST = "httpbin.org";
@@ -74,9 +75,9 @@ WiFiManager wm;
 
 void screenPrintText(String text, unsigned long position, unsigned long line, unsigned long cleanScreen)
 {
-  if (!__TMP_SCREEN_IS_INITATED)
+  if (!__SCREEN_INITATED)
   {
-    __TMP_SCREEN_IS_INITATED = 1;
+    __SCREEN_INITATED = 1;
     // Screen begin
     u8x8.begin();
     u8x8.setFont(u8x8_font_victoriabold8_r);
@@ -207,10 +208,10 @@ bool fetchJsonFile(void)
 
 void getJsonConfig(void)
 {
-  __TMP_FETCHING_CONFIG = true;
-  while (__TMP_FETCHING_CONFIG)
+  __FETCHING_CONFIG = true;
+  while (__FETCHING_CONFIG)
   {
-    __TMP_FETCHING_CONFIG = fetchJsonFile();
+    __FETCHING_CONFIG = fetchJsonFile();
   }
 }
 
@@ -251,7 +252,7 @@ void setup()
   bool res;
   // res = wm.autoConnect(); // auto generated AP name from chipid
   // res = wm.autoConnect("AutoConnectAP"); // anonymous ap
-  res = wm.autoConnect("AutoConnectAP", "standupnow"); // password protected ap
+  res = wm.autoConnect("AutoConnectAP", "boilerpack"); // password protected ap
 
   if (!res)
   {
