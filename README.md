@@ -41,6 +41,7 @@ If you want higher upload speed, adjust the `upload_speed` in `platformio.ini`.
 
 # How to start
 
+TBD...
 
 # References and Thanks to
 
