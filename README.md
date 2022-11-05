@@ -32,7 +32,7 @@ The solution has been tested with the following micro-controllers:
 
 The solution has been tested with the following screen(s):
 
-- SH1106_128X64 (Like the one you can find [here](https://www.aliexpress.com/item/32896971385.html)) - Connected to GND+3.3V+SCK+SDA
+- NONAME SH1106_128X64 (Like the one you can find [here](https://www.aliexpress.com/item/32896971385.html)) - Connected to GND+3.3V+SCK+SDA
 
 GPIO Outputs:
 
@@ -48,9 +48,17 @@ If you want higher upload speed, adjust the `upload_speed` in `platformio.ini`.
 
 TBD...
 
-# References and Thanks to
+## References and Thanks to
 
 - [WifiManager](https://github.com/tzapu/WiFiManager)
 - [U8g2](https://github.com/olikraus/u8g2)
 - [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
 - [ezButton](https://github.com/ArduinoGetStarted/button)
+
+## Images
+![NONAME SH1106_128X64](https://user-images.githubusercontent.com/3549445/200091544-6f785678-4ab7-4657-823f-d9cf03bd0eed.png)
+
+![NodeMCU](https://user-images.githubusercontent.com/3549445/200091580-8f07b2d4-c76d-4c5c-8ced-c1294a50cbfc.png)
+
+![WeMos D1 mini Pro](https://user-images.githubusercontent.com/3549445/200091623-b7ee5a87-1be9-44f3-b774-4100d4691868.png)
+
